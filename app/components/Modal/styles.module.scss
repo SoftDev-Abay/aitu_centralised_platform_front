@@ -1,0 +1,108 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  transition: 0.5s;
+  z-index: 1000;
+  &Container {
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 90% !important;
+    height: fit-content;
+    background: #fff;
+    box-shadow: 0px 0px 60px 0px rgba(0, 0, 0, 0.05);
+    border-radius: 2px;
+    padding: 30px;
+    overflow-y: scroll;
+    z-index: 5;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    @media (max-width: 992px) {
+      padding: 30px;
+    }
+    // @media (max-width: 400px) {
+    // 	height: 90%;
+    // }
+    @media (max-width: 310px) {
+      // height: 90%;
+      padding: 20px;
+    }
+  }
+  &Top {
+    position: relative;
+  }
+  &Controls {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    cursor: pointer;
+    z-index: 2;
+    @media (max-width: 992px) {
+      top: 0px;
+    }
+    @media (max-width: 500px) {
+      svg {
+        height: 30px !important;
+        width: 30px !important;
+      }
+    }
+  }
+  &Main {
+    height: 100%;
+    max-height: 80vh;
+    h2 {
+      font-weight: 600;
+      font-size: 24px;
+      line-height: normal;
+      letter-spacing: -0.48px;
+      color: #26333d;
+      @media (max-width: 992px) {
+        font-size: 20px;
+        line-height: 29px;
+      }
+      @media (max-width: 330px) {
+        font-size: 16px;
+        line-height: 22px;
+      }
+    }
+  }
+  &ContainerFull {
+    border: none;
+    position: relative;
+    left: 50%;
+    outline: none;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 90% !important;
+    height: 60% !important;
+    background: #000 !important;
+    z-index: 5;
+  }
+  &MainFull {
+    border: none;
+    outline: none;
+    height: 100% !important;
+    background: #000 !important;
+  }
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: 0.5s;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.3);
+
+  &.transparent {
+    background: transparent;
+  }
+}
