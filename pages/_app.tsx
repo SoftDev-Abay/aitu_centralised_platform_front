@@ -13,6 +13,11 @@ import {
 } from "@tanstack/react-query";
 import { LoadingContext } from "@/app/context/LoadingContext";
 import { useLoading } from "@/app/context/LoadingContext";
+import { Montserrat } from "next/font/google";
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+});
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -21,21 +26,23 @@ export default function App({ Component, pageProps }: AppProps) {
   const queryClient = new QueryClient();
 
   return (
-    <AppCacheProvider {...pageProps}>
-      <NextIntlClientProvider
-        locale={router.locale}
-        timeZone="Europe/Vienna"
-        messages={pageProps.messages}
-      >
-        <LoadingContext.Provider value={{ isLoading, setIsLoading }}>
-          <QueryClientProvider client={queryClient}>
-            <AxiosProvider>
-              <ToastContainer />
-              <Component {...pageProps} />
-            </AxiosProvider>
-          </QueryClientProvider>
-        </LoadingContext.Provider>
-      </NextIntlClientProvider>
-    </AppCacheProvider>
+    <div className={montserrat.className}>
+      <AppCacheProvider {...pageProps}>
+        <NextIntlClientProvider
+          locale={router.locale}
+          timeZone="Europe/Vienna"
+          messages={pageProps.messages}
+        >
+          <LoadingContext.Provider value={{ isLoading, setIsLoading }}>
+            <QueryClientProvider client={queryClient}>
+              <AxiosProvider>
+                <ToastContainer />
+                <Component {...pageProps} />
+              </AxiosProvider>
+            </QueryClientProvider>
+          </LoadingContext.Provider>
+        </NextIntlClientProvider>
+      </AppCacheProvider>
+    </div>
   );
 }
