@@ -43,16 +43,16 @@ const SurveyConstructor: React.FC<Props> = ({ clubId }) => {
   const handleSubmit = async () => {
     const data = {
       clubId,
-      deadline: deadline ? deadline.toISOString() : null,
-      templateContent: {
+      deadline: "2025-02-24 06:36:34",
+      templateContent: JSON.stringify({
         title: surveyTitle,
         description: surveyDescription,
         // Convert the deadline to ISO string if selected.
         questions: questions,
-      },
+      }),
     };
     try {
-      console.log( data );
+      console.log({ data });
       // Replace "/applications/form" with your actual backend endpoint.
       await axios.post("/applications/form", data);
       toast.success("Survey submitted successfully!");

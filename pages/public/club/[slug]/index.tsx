@@ -9,6 +9,10 @@ import ClubMembersAdminsTables from "@/app/pages/Club/ClubMembersAdminsTables";
 import Card from "@/app/components/Card/Card";
 import ClubUserController from "@/app/pages/Club/ClubUserController";
 import { UseUserStore } from "@/app/store/useUserStore";
+import Button from "@/app/components/Button/Button";
+import Link from "next/link";
+import ClubApplicationsTable from "@/app/pages/Club/ClubApplicationsTable";
+
 const Page = () => {
   const axios = useAxios();
   const router = useRouter();
@@ -49,7 +53,11 @@ const Page = () => {
             <ClubMembersAdminsTables club={club} refetch={fetchClub} />
           </Card>
 
-          <ClubUserController clubId={club.id} onUserAdded={fetchClub} />
+          <div className="mb-6">
+            <ClubUserController clubId={club.id} onUserAdded={fetchClub} />
+          </div>
+
+          <ClubApplicationsTable clubId={club.id} />
         </>
       ) : null}
     </Wrapper>

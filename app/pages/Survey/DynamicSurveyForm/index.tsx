@@ -153,8 +153,12 @@ const DynamicSurveyForm: React.FC<DynamicSurveyFormProps> = ({
       <div className="max-w-2xl mx-auto">
         {/* Survey Header */}
         <Card className="mb-4">
-          <h1 className="text-heading2-bold font-bold mb-2">{survey.title}</h1>
-          <p className="">{survey.description}</p>
+          <h1 className="text-heading2-bold font-bold mb-2">
+            {survey?.title ? survey.title : "New title"}
+          </h1>
+          <p className="">
+            {survey?.description ? survey.description : "New description"}
+          </p>
         </Card>
         <form onSubmit={handleSubmit}>
           {survey.questions.map((q) => renderQuestion(q))}

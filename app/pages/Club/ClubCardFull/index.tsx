@@ -17,6 +17,7 @@ const ClubCardFull: React.FC<ClubCardFullProps> = ({
   members,
   status,
   userRole,
+  forms,
 }) => {
   return (
     <Card>
@@ -36,9 +37,11 @@ const ClubCardFull: React.FC<ClubCardFullProps> = ({
         </div>
       </div>
       <p className="text-body-normal mb-7">{description}</p>
-      {!userRole ? (
+      {!userRole && forms.length > 0 ? (
         <Button color="dark">
-          <Link href={`/survey`}>Apply</Link>
+          <Link href={`/public/survey/responce/submit/${forms[0].id}`}>
+            Apply
+          </Link>
         </Button>
       ) : null}
     </Card>

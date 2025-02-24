@@ -25,6 +25,16 @@ type ClubData = {
   admins: Admin[];
   members: Member[];
   status: string;
+  forms: [
+    {
+      id: string;
+      createdBy: string;
+      createdAt: string;
+      clubId: string;
+      deadline: string;
+      templateContent: string;
+    }
+  ];
 };
 
 export type { ClubData, Admin, Member };
