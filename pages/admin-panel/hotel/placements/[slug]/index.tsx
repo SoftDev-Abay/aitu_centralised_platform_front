@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import AdminWrapper from "@/app/pages/Wrappers/AdminPanel/Wrapper";
+import AdminWrapper from "@/app/pages/Wrappers/RootWrapper/Wrapper";
 import useRoom from "@/app/hooks/useRoom";
 import { GetServerSideProps } from "next";
 import Button from "@/app/components/Button/Button";

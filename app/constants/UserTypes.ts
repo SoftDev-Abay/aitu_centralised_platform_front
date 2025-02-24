@@ -1,31 +1,37 @@
 interface IUser {
   id: number;
-  role_id: number;
-  first_name: string;
-  last_name: string;
-  middle_name: string;
-  phone: string;
+  firstName: string;
+  lastName: string;
   email: string;
-  status: string;
-  created_at: string;
-  full_name: string;
-  gender: string;
-  city: string;
-  region: string;
-  role: {
-    id: number;
-    slug: string;
-    title: string;
-    created_at: string;
-    permission: [
-      {
-        id: number;
-        slug: string;
-        title: string;
-        created_at: string;
-      }
-    ];
-  };
+  department: string;
+  securityKey: string;
+  role: string;
+  clubs: {
+    id: string;
+    name: string;
+    description: string;
+    status: string;
+    role: string;
+  }[];
 }
+
+// {
+//   "id": 9338,
+//   "firstName": "Nurzhau",
+//   "lastName": "Azimbai",
+//   "email": "221558@astanait.edu.kz",
+//   "department": "SE-2204",
+//   "securityKey": "a53dd0f1133a51367c3bb5169ba46c68",
+//   "role": "ADMIN",
+//   "clubs": [
+//       {
+//           "id": "a820eb86-ac48-486e-9ff6-a4a85e05b4fd",
+//           "name": "Java devs",
+//           "description": "Club for java development enjoyers",
+//           "status": "ACTIVE",
+//           "role": "ADMIN"
+//       }
+//   ]
+// }
 
 export type { IUser };

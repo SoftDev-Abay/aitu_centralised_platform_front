@@ -32,6 +32,8 @@ type Props = InputHTMLAttributes<HTMLInputElement> & {
   disabled?: boolean;
   borderFocus?: boolean;
   style?: any;
+  wrapperStyle?: any;
+  wrapperClassname?: string;
   borderFilterRoomTop?: boolean;
   error?: string | undefined;
 };
@@ -57,12 +59,17 @@ const Input: React.FC<Props> = ({
   borderFocus,
   disabled = false,
   style,
+  wrapperStyle,
+  wrapperClassname,
   borderFilterRoomTop = false,
   error = false,
   ...props
 }) => {
   return (
-    <div>
+    <div
+      style={wrapperStyle && wrapperStyle}
+      className={wrapperClassname && wrapperClassname}
+    >
       <div
         className={classNames(styles.inputGroup, {
           [styles.inputGroupLeft]: iconLeft,
@@ -110,7 +117,7 @@ const Input: React.FC<Props> = ({
             onChange={onChange || register?.onChange}
             onBlur={onBlur || register?.onBlur}
             placeholder={placeholder}
-            style={style && style}
+            style={style}
             {...props}
           />
         )}

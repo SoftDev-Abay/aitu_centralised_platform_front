@@ -21,7 +21,7 @@ export default function AxiosProvider({
 
     axiosInstance.interceptors.request.use((config) => {
       // Read token from anywhere, in this case directly from localStorage
-      const token = Cookies.get("access_token");
+      const token = Cookies.get("token");
 
       if (token) {
         config.headers.Authorization = `Bearer ${token}`;
@@ -41,7 +41,7 @@ export default function AxiosProvider({
           );
         } else if (error.response && error.response.status === 403) {
           router.replace(
-            "/error?code=403&message=Session Expired&redirect=/login"
+            "/error?code=403&message=SessionExpired&redirect=/login"
           );
         }
         return Promise.reject(error);

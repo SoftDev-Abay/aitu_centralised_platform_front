@@ -20,7 +20,7 @@ export let SignInSchema = object({
     .max(50, "Maximum length is 50 characters")
     .required("Field is required"),
   password: string()
-    .min(5, "Minimum length is 5 characters")
+    .min(4, "Minimum length is 4 characters")
     .max(50, "Maximum length is 50 characters")
     .required("Field is required"),
 });
@@ -33,7 +33,7 @@ export let SignUpSchema = object({
     .max(50, "Maximum length is 50 characters")
     .required("Field is required"),
   password: string()
-    .min(5, "Minimum length is 5 characters")
+    .min(4, "Minimum length is 4 characters")
     .max(50, "Maximum length is 50 characters")
     .required("Field is required"),
 });
@@ -156,3 +156,14 @@ export let AddPlacementFormSchema = object({
 });
 
 export type AddPlacementFormType = InferType<typeof AddPlacementFormSchema>;
+
+// Yup schema for validations
+export const CreatePostFormSchema = object({
+  title: string().required("Title is required"),
+  description: string().required("Description is required"),
+  image: mixed().test("fileRequired", "Image is required", (value) => {
+    return value && value instanceof File;
+  }),
+});
+
+export type CreatePostFormSchemaType = InferType<typeof CreatePostFormSchema>;

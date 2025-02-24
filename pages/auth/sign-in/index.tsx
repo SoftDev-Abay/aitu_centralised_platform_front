@@ -39,20 +39,27 @@ const Page = () => {
 
   const onSubmit: SubmitHandler<SignInType> = async (data) => {
     try {
-      const response = await axios.post("/api/v1/login", data);
+      console.log(data);
 
-      const access_token = response.data.access_token;
-      const refresh_token = response.data.refresh_token;
-      const user = response.data.data;
+      const responseLogin = await axios.post("/auth/login", {
+        ...data,
+      });
+
+      const token = responseLogin.data.token;
+
+      Cookies.set("token", token);
+
+      const responseUserData = await axios.get("/users/visitor");
+      const user = responseUserData.data;
 
       UseUserStore.getState().setCurrentUser(user);
 
-      Cookies.set("access_token", access_token);
-      Cookies.set("refresh_token", refresh_token);
+      // console.log({ token });
+      console.log({ token, user });
 
-      toast.success("Авторизация прошла успешно!");
+      toast.success("Authorization successful!");
 
-      router.push("/admin-panel");
+      router.push("/public/post");
     } catch (error) {
       console.log(error);
 
@@ -74,12 +81,18 @@ const Page = () => {
         <div className="auth-card">
           <div className="header">
             <Image
-              src="/imgs/logo_white.png"
+              src="/imgs/aitu-logo.png"
+              style={{ filter: "brightness(0) invert(1)" }}
               alt="Logo"
               priority
-              width="115"
+              width="70"
               height="39"
             />
+            <h2 className="text-heading4-semibold text-white">
+              Astana IT
+              <br />
+              University
+            </h2>
           </div>
           <div className="body">
             <h3>Login</h3>
@@ -108,7 +121,10 @@ const Page = () => {
               <Button
                 color="primary"
                 size="lg"
-                style={{ width: "100%" }}
+                style={{
+                  width: "100%",
+                  backgroundColor: "rgba(21, 108, 189, 1)",
+                }}
                 onClick={handleSubmit(onSubmit)}
               >
                 Login

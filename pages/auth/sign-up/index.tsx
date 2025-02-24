@@ -39,11 +39,16 @@ const Page = () => {
 
   const onSubmit: SubmitHandler<SignUpType> = async (data) => {
     try {
-      const response = await axios.post("/api/v1/register", data);
+      const reqData = {
+        ...data,
+        role: "USER",
+      };
 
-      toast.success("Регистрация прошла успешно!");
+      const response = await axios.post("/auth/register", reqData);
 
-      router.push("/auth/sing-up");
+      toast.success("Registration successful!");
+
+      router.push("/auth/sing-in");
     } catch (error) {
       console.log(error);
 
@@ -65,12 +70,18 @@ const Page = () => {
         <div className="auth-card">
           <div className="header">
             <Image
-              src="/imgs/logo_white.png"
+              src="/imgs/aitu-logo.png"
+              style={{ filter: "brightness(0) invert(1)" }}
               alt="Logo"
               priority
-              width="115"
+              width="70"
               height="39"
             />
+            <h2 className="text-heading4-semibold text-white">
+              Astana IT
+              <br />
+              University
+            </h2>
           </div>
           <div className="body">
             <h3>Register</h3>
@@ -95,11 +106,14 @@ const Page = () => {
                 error={errors.password?.message}
               />
             </div>
-            <div className="actions">
+            <div className="actions ">
               <Button
                 color="primary"
                 size="lg"
-                style={{ width: "100%" }}
+                style={{
+                  width: "100%",
+                  backgroundColor: "rgba(21, 108, 189, 1)",
+                }}
                 onClick={handleSubmit(onSubmit)}
               >
                 Sign Up

@@ -1,0 +1,65 @@
+@use "../../../styles/colors.scss" as c;
+
+.link {
+  display: flex;
+  position: relative;
+  gap: 15px; /* More reasonable gap in pixels */
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 16px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 17.07px;
+  padding: 15px 0;
+}
+
+.link p {
+  font-size: 16px;
+  margin: 0;
+}
+
+.link_with_icon {
+  justify-content: space-between;
+}
+.icon-text-wrapper {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.nested-links-container {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding-left: calc(35px - 4px);
+  padding-bottom: 10px;
+
+  .link {
+    padding: 4px 4px 6px 4px;
+    border-radius: 7px;
+
+    &.active {
+      background-color: c.$color-background;
+    }
+  }
+}
+
+.notification-number-badge {
+  background-color: c.$color-primary;
+  border-radius: 50%;
+  width: 21px;
+  height: 21px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  span {
+    color: c.$color-white;
+    font-family: Montserrat;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 15.85px;
+  }
+}

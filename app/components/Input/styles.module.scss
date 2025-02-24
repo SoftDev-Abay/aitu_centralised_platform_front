@@ -23,6 +23,10 @@
     border-color: #e98686;
   }
 
+  // &::placeholder {
+  //   font-size: inherit;
+  // }
+
   &Group {
     position: relative;
     svg {
@@ -107,9 +111,23 @@
   transform: translate(-50%) !important;
 }
 
+.input_underline {
+  border: none !important;
+  border-bottom: 1px solid #a8b7c7 !important;
+  border-radius: 0;
+  padding: 18px 15px;
+  outline: none;
+}
+
 .borderFilterRoomTop {
   border-radius: 10px 0 0 10px;
   @media (max-width: 1200px) {
     border-radius: 10px 10px 0 0;
   }
+}
+
+.input::placeholder {
+  font-size: inherit;
+  color: gray;
+  /* Other placeholder styles */
 }

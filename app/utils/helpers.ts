@@ -1,4 +1,9 @@
 import Cookies from "js-cookie";
+import clsx from "clsx";
+import { ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs));
 
 export const popRouteFromPath = (path: string, count: number = 1): string => {
   const pathArray = path.split("/");

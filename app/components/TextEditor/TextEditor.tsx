@@ -25,11 +25,15 @@ const TextEditor = ({
   name,
   error,
   defaultValue,
+  maxHeight,
+  minHeight,
 }: {
   control: any;
   name: string;
   error?: string;
   defaultValue?: string;
+  maxHeight?: string | number;
+  minHeight?: string | number;
 }) => {
   return (
     <Controller
@@ -51,7 +55,10 @@ const TextEditor = ({
 
         return (
           <div>
-            <div className="text-editor-container">
+            <div
+              className="text-editor-container content"
+              style={{ maxHeight: maxHeight, minHeight: minHeight }}
+            >
               <Toolbar editor={editor} />
               <EditorContent editor={editor} />
             </div>

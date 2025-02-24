@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "@/app/components/Card/Card";
 import PageHeader from "@/app/components/PageHeader/PageHeader";
-import AdminWrapper from "@/app/pages/Wrappers/AdminPanel/Wrapper";
+import AdminWrapper from "@/app/pages/Wrappers/RootWrapper/Wrapper";
 import InputGroup from "@/app/components/InputGroup/InputGroup";
 import Input from "@/app/components/Input/Input";
 import "./style.scss";

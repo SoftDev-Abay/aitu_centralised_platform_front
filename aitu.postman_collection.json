@@ -1,0 +1,386 @@
+{
+	"info": {
+		"_postman_id": "ddd480d7-1d61-44c4-834e-4335afa52a87",
+		"name": "aitu",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "27521588"
+	},
+	"item": [
+		{
+			"name": "image",
+			"item": [
+				{
+					"name": "upload",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "postman-cloud:///1ef702c3-95d4-4320-b940-5327afe887a8"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/rest/images",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"rest",
+								"images"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "download",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "post",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyMjE1NThAYXN0YW5haXQuZWR1Lmt6IiwiaWF0IjoxNzQwMTQyMzYxLCJleHAiOjE3NDAyMjg3NjF9.A7UaRjBwnUQynbZ_4hPo8kOSPrdH-oaDDBAUsbl73QQ"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "img",
+									"contentType": "multipart/form-data",
+									"type": "file",
+									"src": "/D:/Desktop/Pictures/photo_2024-09-28_08-14-38.jpg"
+								},
+								{
+									"key": "dto",
+									"value": "{\n    \"title\": \"Nice title\",\n    \"description\": \"Some big description about post\"\n}",
+									"contentType": "application/json",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{url}}/rest/posts"
+					},
+					"response": []
+				},
+				{
+					"name": "upload image",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "postman-cloud:///1ef702c3-95d4-4320-b940-5327afe887a8"
+								}
+							]
+						},
+						"url": "{{url}}/rest/posts/8875f656-9499-4fc7-a5cf-d178b71b5b60/uploadImage"
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "club",
+			"item": [
+				{
+					"name": "applications",
+					"item": [
+						{
+							"name": "create form application",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"clubId\": \"a820eb86-ac48-486e-9ff6-a4a85e05b4fd\",\r\n    \"deadline\": \"2025-03-07 23:59:59\",\r\n    \"templateContent\": \"{\\\"questions\\\": [{\\\"id\\\":1, \\\"question\\\": \\\"Why do you want to join?\\\"}]}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/rest/applications/form"
+							},
+							"response": []
+						},
+						{
+							"name": "get application form",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": ""
+							},
+							"response": []
+						},
+						{
+							"name": "get requests by form id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": ""
+							},
+							"response": []
+						},
+						{
+							"name": "create request",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"formId\": \"4749b6cd-05d0-4f20-992c-9f824a756993\",\r\n    \"answerContent\": \"{\\\"answers\\\": [{\\\"questionId\\\": 1, \\\"answer\\\": \\\"I love programming.\\\"}]}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/rest/applications/form/request"
+							},
+							"response": []
+						},
+						{
+							"name": "respond to request",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"requestId\": \"62a446bb-13f9-4ac1-99a3-c92dacea095b\",\r\n    \"response\": \"ACCEPTED\",\r\n    \"responseMessage\": \"You are accepted!\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/rest/applications/request/response",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"rest",
+										"applications",
+										"request",
+										"response"
+									],
+									"query": [
+										{
+											"key": "response",
+											"value": "ACCEPTED",
+											"disabled": true
+										},
+										{
+											"key": "message",
+											"value": "You are accepted!",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get visitor requests",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": ""
+							},
+							"response": []
+						},
+						{
+							"name": "get visitor forms",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": ""
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "create club",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Java devs\",\r\n    \"description\": \"Club for java developing enjoyers\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/rest/clubs"
+					},
+					"response": []
+				},
+				{
+					"name": "get club by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": ""
+					},
+					"response": []
+				},
+				{
+					"name": "add member to club",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": "{{url}}/rest/clubs/575eda1b-38dd-404e-8d89-6923635faec0/members/9404"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "register",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"securityKey\": \"b1f3908e610605bdfb91c9293346c89c\",\r\n    \"password\": \"pass\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{url}}/rest/auth/register"
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"221558@astanait.edu.kz\",\r\n    \"password\": \"pass\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{url}}/rest/auth/login"
+			},
+			"response": []
+		},
+		{
+			"name": "visitor info",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{url}}/rest/users/visitor"
+			},
+			"response": []
+		},
+		{
+			"name": "get visitor's clubs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": ""
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": {
+			"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyMjE1NThAYXN0YW5haXQuZWR1Lmt6IiwiaWF0IjoxNzQwMzQwNTYxLCJleHAiOjE3NDA0MjY5NjF9.XKKq37O7HciAfxxyhDtlRxbAfzpYP18Fglu5BEgCYMk"
+		}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "http://localhost:8080",
+			"type": "string",
+			"disabled": true
+		},
+		{
+			"key": "securityKey",
+			"value": "a53dd0f1133a51367c3bb5169ba46c68",
+			"type": "string"
+		},
+		{
+			"key": "url",
+			"value": "http://23.251.154.147:8080",
+			"type": "string"
+		}
+	]
+}

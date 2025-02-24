@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import AdminWrapper from "@/app/pages/Wrappers/AdminPanel/Wrapper";
+import AdminWrapper from "@/app/pages/Wrappers/RootWrapper/Wrapper";
 import ItemCard from "@/app/components/ItemCard/ItemCard";
 import Tabs from "@/app/components/Tabs/Tabs";
 import PageHeader from "@/app/components/PageHeader/PageHeader";

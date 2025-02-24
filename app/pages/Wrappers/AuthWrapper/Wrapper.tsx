@@ -8,7 +8,7 @@ const AuthWrapper: FC<{ children: ReactNode }> = ({ children }) => {
     <div className="wrapper-auth">
       <div className="container">
         {/* <Navbar /> */}
-        <div className="content">{children}</div>
+        <div className="main-content">{children}</div>
       </div>
     </div>
   );
